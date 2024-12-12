@@ -1,0 +1,1 @@
+"# DemoRazorPage-QRGenerator-" 

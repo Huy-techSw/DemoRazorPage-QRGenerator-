@@ -1,0 +1,32 @@
+﻿@page
+@model QRGenerator.Pages.QRGeneratorModel
+@{
+    ViewData["Title"] = "QR Generator";
+}
+
+<h2>QR Generator</h2>
+
+<form method="post">
+    <div class="form-group">
+        <label asp-for="Text" class="control-label"></label>
+        <input asp-for="Text" class="form-control" />
+        <span asp-validation-for="Text" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Generate QR Code" class="btn btn-primary" width="400"/>
+    </div>
+</form>
+
+@if (Model.QRCodeImageData != null)
+{
+    <div class="text-center">
+        <h3>QR Code:</h3>
+        <img src="data:image/png;base64,@Model.QRCodeImageData" alt="Generated QR Code" width="500" height="500"/>
+    </div>
+}
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
